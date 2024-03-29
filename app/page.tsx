@@ -4,8 +4,9 @@ import { Details } from "@/shared/ui/details";
 import { Input } from "@/shared/ui/input";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
-export default async function Home() {
+export const dynamic = 'force-dynamic'
 
+export default async function Home() {
   return (
     <div className="min-h-full bg-alternative relative max-h-screen flex">
       <div className="flex flex-col min-h-screen w-full overflow-y-auto relative mx-4">
