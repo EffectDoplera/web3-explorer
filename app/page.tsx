@@ -1,6 +1,6 @@
 import { LatestBlockNumberOverview, LatestBlockTransactionSizeOverview } from "@/entities/block";
+import { CurrentPriceOverview } from "@/entities/price";
 import { Button } from "@/shared/ui/button";
-import { Details } from "@/shared/ui/details";
 import { Input } from "@/shared/ui/input";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
@@ -29,7 +29,7 @@ export default async function Home() {
           <div className="flex flex-wrap gap-4">
             <LatestBlockNumberOverview />
             <LatestBlockTransactionSizeOverview />
-            <Details title="Poligon price">Hello</Details>
+            <CurrentPriceOverview />
           </div>
         </main>
       </div>
