@@ -1,5 +1,5 @@
 import { LatestBlockNumberOverview, LatestBlockTransactionSizeOverview } from '@/entities/block'
-import { CurrentPriceOverview } from '@/entities/price'
+import { CurrentMarketCapOverview, CurrentPriceOverview } from '@/entities/price'
 import { SearchBar } from '@/widgets/search-bar'
 
 export const dynamic = 'force-dynamic'
@@ -15,6 +15,7 @@ export default async function Home() {
             <LatestBlockNumberOverview />
             <LatestBlockTransactionSizeOverview />
             <CurrentPriceOverview />
+            <CurrentMarketCapOverview />
           </div>
         </main>
       </div>

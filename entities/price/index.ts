@@ -1,1 +1,1 @@
-export { CurrentPriceOverview } from './ui'
+export { CurrentPriceOverview, CurrentMarketCapOverview } from './ui'

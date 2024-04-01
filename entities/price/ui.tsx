@@ -13,3 +13,16 @@ export const CurrentPriceOverview = async () => {
     </Details>
   )
 }
+
+export const CurrentMarketCapOverview = async () => {
+  const price = await getMaticPrice()
+
+  return (
+    <Details title="matic market cap on polygon">
+      {new Intl.NumberFormat('en', {
+        style: 'currency',
+        currency: 'USD',
+      }).format(price * 9_908_000_000)}
+    </Details>
+  )
+}
