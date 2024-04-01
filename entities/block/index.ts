@@ -1,5 +1,1 @@
-export {
-  LatestBlockNumberOverview,
-  LatestBlockTransactionSizeOverview,
-  BlockOverview,
-} from './ui'
+export { LatestBlockNumberOverview, LatestBlockTransactionSizeOverview, BlockOverview } from './ui'

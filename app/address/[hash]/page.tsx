@@ -1,23 +1,19 @@
-import { Suspense } from "react";
 import { Address } from '@/entities/address'
+import { Suspense } from 'react'
 
 interface AddressPageProps {
   params: {
-    hash: string;
-  };
+    hash: string
+  }
 }
 
 export default async function AddressPage({ params }: AddressPageProps) {
-  const { hash } = params;
+  const { hash } = params
   return (
     <>
-      <Suspense
-        fallback={
-          <div>Loading...</div>
-        }
-      >
+      <Suspense fallback={<div>Loading...</div>}>
         <Address hash={hash} />
       </Suspense>
     </>
-  );
+  )
 }

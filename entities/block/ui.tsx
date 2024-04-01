@@ -1,9 +1,9 @@
-import { Details } from "@/shared/ui/details"
-import { getLatestBlock, getBlockDetails } from "./api"
-import { formatGwei } from "viem"
-import { FC } from "react"
-import Link from "next/link"
-import { formatBaseFeePerGas, formatBurntFees, formatGasUsed } from "./lib"
+import { Details } from '@/shared/ui/details'
+import Link from 'next/link'
+import { FC } from 'react'
+import { formatGwei } from 'viem'
+import { getBlockDetails, getLatestBlock } from './api'
+import { formatBaseFeePerGas, formatBurntFees, formatGasUsed } from './lib'
 
 export const LatestBlockNumberOverview = async () => {
   const latestBlock = await getLatestBlock()
@@ -13,7 +13,7 @@ export const LatestBlockNumberOverview = async () => {
       title="latest block number"
       link={{
         text: 'view block',
-        href: `/block/${latestBlock.number}`
+        href: `/block/${latestBlock.number}`,
       }}
     >
       {latestBlock.number.toLocaleString()}
@@ -29,7 +29,7 @@ export const LatestBlockTransactionSizeOverview = async () => {
       title="latest block transactions count"
       link={{
         text: 'view transaction',
-        href: `/block/${latestBlock.transactions[0]}`
+        href: `/block/${latestBlock.transactions[0]}`,
       }}
     >
       {latestBlock.transactions.length}
@@ -44,9 +44,7 @@ interface BlockOverviewProps {
 export const BlockOverview: FC<BlockOverviewProps> = async ({ number }) => {
   const block = await getBlockDetails(number)
   return (
-    <Details
-      title="block details"
-    >
+    <Details title="block details">
       <div className="flex flex-col">
         <div className="flex gap-4">
           <div>Block Height</div>
@@ -55,11 +53,13 @@ export const BlockOverview: FC<BlockOverviewProps> = async ({ number }) => {
 
         <div className="flex gap-4">
           <div>Timestamp</div>
-          <div>{new Intl.DateTimeFormat('en', {
-            dateStyle: 'long',
-            timeStyle: 'long',
-            timeZone: 'UTC',
-          }).format(new Date(+block.timestamp.toString() * 1000))}</div>
+          <div>
+            {new Intl.DateTimeFormat('en', {
+              dateStyle: 'long',
+              timeStyle: 'long',
+              timeZone: 'UTC',
+            }).format(new Date(+block.timestamp.toString() * 1000))}
+          </div>
         </div>
 
         <div className="flex gap-4">
@@ -68,26 +68,20 @@ export const BlockOverview: FC<BlockOverviewProps> = async ({ number }) => {
         </div>
         <div className="flex gap-4">
           <div>Gas Used</div>
-          <div>
-            {formatGasUsed(block)}
-          </div>
+          <div>{formatGasUsed(block)}</div>
         </div>
 
         {!!block.baseFeePerGas && (
           <div className="flex gap-4">
             <div>Base Fee Per Gas</div>
-            <div>
-              {formatBaseFeePerGas(block)}
-            </div>
+            <div>{formatBaseFeePerGas(block)}</div>
           </div>
         )}
 
         {!!block.baseFeePerGas && (
           <div className="flex gap-4">
             <div>Burnt fees</div>
-            <div>
-              {formatBurntFees(block)}
-            </div>
+            <div>{formatBurntFees(block)}</div>
           </div>
         )}
       </div>

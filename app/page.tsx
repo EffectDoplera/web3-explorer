@@ -1,6 +1,6 @@
-import { LatestBlockNumberOverview, LatestBlockTransactionSizeOverview } from "@/entities/block";
-import { CurrentPriceOverview } from "@/entities/price";
-import { SearchBar } from "@/widgets/search-bar";
+import { LatestBlockNumberOverview, LatestBlockTransactionSizeOverview } from '@/entities/block'
+import { CurrentPriceOverview } from '@/entities/price'
+import { SearchBar } from '@/widgets/search-bar'
 
 export const dynamic = 'force-dynamic'
 
@@ -19,5 +19,5 @@ export default async function Home() {
         </main>
       </div>
     </div>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import { getTransaction } from "./api"
-import { Hash } from "viem"
-import { FC } from "react"
+import { FC } from 'react'
+import { Hash } from 'viem'
+import { getTransaction } from './api'
 
 interface TransactionProps {
   hash: Hash

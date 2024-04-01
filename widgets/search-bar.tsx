@@ -1,18 +1,18 @@
 'use client'
 
-import { Button } from "@/shared/ui/button"
-import { Input } from "@/shared/ui/input"
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/shared/ui/form"
-import { useRouter } from "next/navigation"
-import { getHashType } from "@/shared/lib"
+import { getHashType } from '@/shared/lib'
+import { Button } from '@/shared/ui/button'
+import { Form, FormControl, FormField, FormItem } from '@/shared/ui/form'
+import { Input } from '@/shared/ui/input'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
+import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const FormSchema = z.object({
   block: z.string().min(2, {
-    message: "must be at least 2 characters.",
+    message: 'must be at least 2 characters.',
   }),
 })
 
@@ -22,7 +22,7 @@ export const SearchBar = () => {
   const form = useForm<FormData>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      block: "",
+      block: '',
     },
   })
 
@@ -36,11 +36,7 @@ export const SearchBar = () => {
 
   return (
     <Form {...form}>
-      <form
-        action=""
-        method="POST"
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
+      <form action="" method="POST" onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
           name="block"
@@ -53,12 +49,7 @@ export const SearchBar = () => {
                     className="rounded-none border-r-2 placeholder-shown:truncate"
                     {...field}
                   />
-                  <Button
-                    type="submit"
-                    variant="outline"
-                    size="icon"
-                    className="rounded-none"
-                  >
+                  <Button type="submit" variant="outline" size="icon" className="rounded-none">
                     <MagnifyingGlassIcon className="h-4 w-4" />
                   </Button>
                 </div>

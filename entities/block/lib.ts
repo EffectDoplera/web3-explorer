@@ -7,9 +7,6 @@ export const formatGasUsed = (block: Block) =>
   }).format(+formatGwei(block.gasUsed) / +formatGwei(block.gasLimit))})`
 
 export const formatBaseFeePerGas = (block: Block) =>
-  `${formatEther(block.baseFeePerGas!)} MATIC (${formatGwei(
-    block.baseFeePerGas!
-  )} Gwei)`
+  `${formatEther(block.baseFeePerGas!)} MATIC (${formatGwei(block.baseFeePerGas!)} Gwei)`
 
-export const formatBurntFees = (block: Block) =>
-  `🔥 ${formatEther(block.baseFeePerGas! * block.gasUsed)} MATIC`
+export const formatBurntFees = (block: Block) => `🔥 ${formatEther(block.baseFeePerGas! * block.gasUsed)} MATIC`
