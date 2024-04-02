@@ -1,11 +1,20 @@
-import type { Metadata } from 'next'
+import './globals.css'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Header } from './header'
-import './globals.css'
 import { SearchBar } from '@/widgets/search-bar'
 import { Footer } from './footer'
+import { cn } from '@/shared/lib'
+import { ThemeProvider } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+}
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,18 +27,30 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="min-h-full relative max-h-screen flex">
-          <div className="grid grid-rows-[auto_1fr_auto] min-h-screen w-full overflow-y-auto relative mx-4">
-            <Header />
-            <main className="flex flex-col gap-4">
-              <SearchBar />
-              {children}
-            </main>
-            <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          inter.className
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="min-h-full max-h-screen flex">
+            <div className="grid grid-rows-[auto_1fr_auto] w-full mx-4">
+              <Header />
+              <main className="flex flex-col gap-4">
+                <SearchBar />
+                {children}
+              </main>
+              <Footer />
+            </div>
           </div>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   )

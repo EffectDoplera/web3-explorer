@@ -1,18 +1,17 @@
 'use client'
 
 import { getHashType } from '@/shared/lib'
-import { Button } from '@/shared/ui/button'
 import { Form, FormControl, FormField, FormItem } from '@/shared/ui/form'
 import { Input } from '@/shared/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 const FormSchema = z.object({
-  block: z.string().min(2, {
-    message: 'must be at least 2 characters.',
+  // TODO: Add validation
+  block: z.string().min(0, {
+    message: '',
   }),
 })
 
@@ -43,16 +42,11 @@ export const SearchBar = () => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <div className="flex items-center overflow-hidden shadow-warning border-2 border-dark-100">
-                  <Input
-                    placeholder="Search by address / Txn Hash / Block"
-                    className="rounded-none border-r-2 placeholder-shown:truncate"
-                    {...field}
-                  />
-                  <Button type="submit" variant="outline" size="icon" className="rounded-none">
-                    <MagnifyingGlassIcon className="h-4 w-4" />
-                  </Button>
-                </div>
+                <Input
+                  placeholder="Search by address / Txn Hash / Block"
+                  className="placeholder-shown:truncate"
+                  {...field}
+                />
               </FormControl>
             </FormItem>
           )}

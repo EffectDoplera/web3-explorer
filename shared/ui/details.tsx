@@ -12,9 +12,9 @@ interface DetailsProps {
 }
 
 export const Details: FC<PropsWithChildren<DetailsProps>> = ({ children, title, link }) => (
-  <Card className="flex-1 basis-48 overflow-hidden border-2 border-purple-100 rounded-none">
+  <Card className="flex-1 basis-48 overflow-hidden">
     <CardHeader className="flex p-3 items-center gap-2 border-b-2 border-purple-100 flex-row">
-      <Image width={20} height={20} alt="" src={`/icons/matic.svg`} />
+      <Image width={20} height={20} alt="" src={`/icons/polygon.svg`} />
       <CardTitle className="font-semibold first-letter:uppercase truncate">{title}</CardTitle>
     </CardHeader>
     <CardContent className="flex p-3 items-center justify-between bg-white-cream-100 font-semibold">
