@@ -11,8 +11,8 @@ export const Transaction: FC<TransactionProps> = async ({ hash }) => {
 
   return (
     <div>
-      <div>Transaction</div>
-      {transaction.hash}
+      <div>INFO</div>
+      {transaction.hash.substring(0, 16)}
     </div>
   )
 }

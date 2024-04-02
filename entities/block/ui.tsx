@@ -32,7 +32,7 @@ export const LatestBlockTransactionSizeOverview = async () => {
       title="latest block transactions count"
       link={{
         text: 'view transaction',
-        href: `/block/${latestBlock.transactions[0]}`,
+        href: `/transaction/${latestBlock.transactions[0]}`,
       }}
     >
       {latestBlock.transactions.length}
