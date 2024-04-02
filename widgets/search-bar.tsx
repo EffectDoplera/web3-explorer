@@ -45,7 +45,7 @@ export const SearchBar = () => {
               <FormControl>
                 <div className="flex items-center overflow-hidden shadow-warning border-2 border-dark-100">
                   <Input
-                    placeholder="Search for an address, transaction hash, or block number"
+                    placeholder="Search by address / Txn Hash / Block"
                     className="rounded-none border-r-2 placeholder-shown:truncate"
                     {...field}
                   />
