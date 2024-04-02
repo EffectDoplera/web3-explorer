@@ -41,9 +41,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-full max-h-screen flex">
-            <div className="grid grid-rows-[auto_1fr_auto] w-full mx-4">
+            <div className="grid grid-rows-[auto_1fr_auto] gap-4 w-full">
               <Header />
-              <main className="flex flex-col gap-4">
+              <main className="flex flex-col gap-4 mx-4">
                 <SearchBar />
                 {children}
               </main>

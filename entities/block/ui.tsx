@@ -69,7 +69,7 @@ export const BlockOverview: FC<BlockOverviewProps> = async ({ number }) => {
         </Row>
 
         <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-          <div>Timestamp</div>
+          <div className="text-gray-500 md:text-black md:font-medium">Timestamp</div>
           <div>
             {new Intl.DateTimeFormat('en', {
               dateStyle: 'long',
@@ -80,24 +80,24 @@ export const BlockOverview: FC<BlockOverviewProps> = async ({ number }) => {
         </Row>
 
         <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-          <div>Gas Limit</div>
+          <div className="text-gray-500 md:text-black md:font-medium">Gas Limit</div>
           <div>{formatGwei(block.gasLimit)} Gwei</div>
         </Row>
         <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-          <div>Gas Used</div>
+          <div className="text-gray-500 md:text-black md:font-medium">Gas Used</div>
           <div>{formatGasUsed(block)}</div>
         </Row>
 
         {!!block.baseFeePerGas && (
           <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-            <div>Base Fee Per Gas</div>
+            <div className="text-gray-500 md:text-black md:font-medium">Base Fee Per Gas</div>
             <div>{formatBaseFeePerGas(block)}</div>
           </Row>
         )}
 
         {!!block.baseFeePerGas && (
           <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-            <div>Burnt fees</div>
+            <div className="text-gray-500 md:text-black md:font-medium">Burnt fees</div>
             <div>{formatBurntFees(block)}</div>
           </Row>
         )}

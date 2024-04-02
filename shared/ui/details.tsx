@@ -12,15 +12,15 @@ interface DetailsProps {
 }
 
 export const Details: FC<PropsWithChildren<DetailsProps>> = ({ children, title, link }) => (
-  <Card className="flex-1 basis-48 overflow-hidden">
-    <CardHeader className="flex p-3 items-center gap-2 border-b-2 border-purple-100 flex-row">
+  <Card className="overflow-hidden">
+    <CardHeader className="flex p-3 items-center gap-2 border-b-2 border-purple-100 flex-row space-y-0">
       <Image width={20} height={20} alt="" src={`/icons/polygon.svg`} />
-      <CardTitle className="font-semibold first-letter:uppercase truncate">{title}</CardTitle>
+      <CardTitle className="leading-normal first-letter:uppercase truncate">{title}</CardTitle>
     </CardHeader>
     <CardContent className="flex p-3 items-center justify-between bg-white-cream-100 font-semibold">
       {children}
       {link && (
-        <Link className="text-blue-300 font-semibold text-sm hover:underline focus:underline truncate" href={link.href}>
+        <Link className="text-primary font-semibold text-sm hover:underline focus:underline truncate" href={link.href}>
           {link.text}
         </Link>
       )}
