@@ -1,4 +1,4 @@
-import { Address } from '@/entities/address'
+import { Address, cropFormatAddress } from '@/entities/address'
 import { Avatar, AvatarFallback } from '@/shared/ui/avatar'
 import { Hash } from 'viem'
 
@@ -20,7 +20,7 @@ export default async function AddressPage({ params }: AddressPageProps) {
               {/* TODO: Add Image */}
               <AvatarFallback>{hash.substring(hash.length - 3, hash.length)}</AvatarFallback>
             </Avatar>
-            <span>{hash}</span>
+            <p>{cropFormatAddress(hash)}</p>
           </div>
         </div>
       </div>
