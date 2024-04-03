@@ -1,4 +1,5 @@
 import { Address, cropFormatAddress } from '@/entities/address'
+import { CopyToClipboardButton } from '@/features/copy-to-clipboard'
 import { Avatar, AvatarFallback } from '@/shared/ui/avatar'
 import { Hash } from 'viem'
 
@@ -21,6 +22,7 @@ export default async function AddressPage({ params }: AddressPageProps) {
               <AvatarFallback>{hash.substring(hash.length - 3, hash.length)}</AvatarFallback>
             </Avatar>
             <p>{cropFormatAddress(hash)}</p>
+            <CopyToClipboardButton text={hash} />
           </div>
         </div>
       </div>
