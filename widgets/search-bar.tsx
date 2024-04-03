@@ -32,6 +32,7 @@ export const SearchBar = () => {
     const hashType = getHashType(block)
     if (hashType === 'unknown') return
     router.push(`/${hashType}/${block}`)
+    form.reset()
   }
 
   return (
