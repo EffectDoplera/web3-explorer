@@ -1,5 +1,5 @@
 import { Details } from '@/shared/ui/details'
-import { getMaticPrice } from './api'
+import { getMaticPrice } from '@/shared/api'
 
 export const CurrentPriceOverview = async () => {
   const price = await getMaticPrice()
