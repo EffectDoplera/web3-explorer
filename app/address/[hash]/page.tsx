@@ -1,5 +1,6 @@
 import { Address, cropFormatAddress } from '@/entities/address'
 import { CopyToClipboardButton } from '@/features/copy-to-clipboard'
+import { ShowQRCodeButton } from '@/features/show-qr-code'
 import { Avatar, AvatarFallback } from '@/shared/ui/avatar'
 import { Hash } from 'viem'
 
@@ -23,6 +24,7 @@ export default async function AddressPage({ params }: AddressPageProps) {
             </Avatar>
             <p>{cropFormatAddress(hash)}</p>
             <CopyToClipboardButton text={hash} />
+            <ShowQRCodeButton text={hash} />
           </div>
         </div>
       </div>
