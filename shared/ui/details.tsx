@@ -12,7 +12,7 @@ interface DetailsProps {
 }
 
 export const Details: FC<PropsWithChildren<DetailsProps>> = ({ children, title, link }) => (
-  <Card className="flex-1 basis-48">
+  <Card className="flex-1">
     <CardHeader className="flex p-3 items-center gap-2 border-b-2 border-purple-100 flex-row space-y-0">
       <Image width={20} height={20} alt="" src={`/icons/polygon.svg`} />
       <CardTitle className="leading-normal first-letter:uppercase truncate">{title}</CardTitle>
