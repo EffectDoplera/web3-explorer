@@ -14,6 +14,7 @@ export const getMonthMarketCap = cache(async () => {
   const to = Date.now().toString().substring(0, 10)
   const response = await fetch(
     `https://pro-api.coingecko.com/api/v3/coins/matic-network/market_chart/range?vs_currency=usd&from=${from}&to=${to}&x_cg_pro_api_key=CG-UoA6PMzX1NVNWVnseK3Soy8T`,
+    { next: { revalidate: 3600 } },
   )
   const { market_caps }: MarketCapResponse = await response.json()
   return market_caps.map(([date, price]) => ({

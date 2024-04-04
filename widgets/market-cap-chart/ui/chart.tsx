@@ -21,19 +21,17 @@ interface ChartProps {
   }[]
 }
 
-export const Chart: FC<ChartProps> = async ({ data }) => {
-  return (
-    <Details title="matic market cap history in 30 days">
-      <LineChart
-        data={data}
-        index="date"
-        categories={['matic']}
-        colors={['fuchsia']}
-        valueFormatter={valueFormatter}
-        yAxisWidth={55}
-        className="h-96 sm:block"
-        autoMinValue
-      />
-    </Details>
-  )
-}
+export const Chart: FC<ChartProps> = ({ data }) => (
+  <Details title="matic market cap history in 30 days">
+    <LineChart
+      data={data}
+      index="date"
+      categories={['matic']}
+      colors={['fuchsia']}
+      valueFormatter={valueFormatter}
+      yAxisWidth={55}
+      className="h-96 sm:block"
+      autoMinValue
+    />
+  </Details>
+)
