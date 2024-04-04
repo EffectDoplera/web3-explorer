@@ -1,6 +1,6 @@
 import { LatestBlockNumberOverview, LatestBlockTransactionSizeOverview } from '@/entities/block'
 import { CurrentMarketCapOverview, CurrentPriceOverview } from '@/entities/price'
-import { Chart } from '@/widgets/chart'
+import { MarketCapChart } from '@/widgets/market-cap-chart'
 
 export const dynamic = 'force-dynamic'
 
@@ -13,7 +13,7 @@ export default async function Home() {
         <CurrentPriceOverview />
         <CurrentMarketCapOverview />
       </div>
-      <Chart />
+      <MarketCapChart />
     </>
   )
 }
