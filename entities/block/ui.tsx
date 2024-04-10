@@ -1,18 +1,19 @@
+import { Button } from '@/shared/ui/button'
 import { Details } from '@/shared/ui/details'
+import { Row } from '@/shared/ui/row'
+import { ChevronLeftIcon, ChevronRightIcon, CubeIcon, TimerIcon } from '@radix-ui/react-icons'
+import Link from 'next/link'
 import { FC } from 'react'
 import { formatGwei } from 'viem'
 import { getBlockDetails, getLatestBlock } from './api'
 import { formatBaseFeePerGas, formatBurntFees, formatGasUsed } from './lib'
-import { Row } from '@/shared/ui/row'
-import { Button } from '@/shared/ui/button'
-import Link from 'next/link'
-import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons'
 
 export const LatestBlockNumberOverview = async () => {
   const latestBlock = await getLatestBlock()
 
   return (
     <Details
+      image={<CubeIcon width={20} height={20} />}
       title="latest block number"
       link={{
         text: 'view block',
@@ -30,6 +31,7 @@ export const LatestBlockTransactionSizeOverview = async () => {
   return (
     <Details
       title="latest block transactions count"
+      image={<TimerIcon width={20} height={20} />}
       link={{
         text: 'view transaction',
         href: `/transaction/${latestBlock.transactions[0]}`,
@@ -47,14 +49,20 @@ interface BlockOverviewProps {
 export const BlockOverview: FC<BlockOverviewProps> = async ({ number }) => {
   const block = await getBlockDetails(number)
   return (
-    <Details title="block details">
+    <Details image={<CubeIcon width={20} height={20} />} title="block details">
       <div className="flex flex-1 flex-col gap-4">
         <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4 items-center">
           <div className="text-gray-500 md:text-black md:font-medium">Block Height</div>
           <div className="flex gap-4 items-center">
             <p>{block.number.toString()}</p>
             <div className="flex gap-2 flex-nowrap">
-              <Button asChild={+number !== 0} variant="outline" size="icon" className="h-6 w-6" disabled={+number === 0}>
+              <Button
+                asChild={+number !== 0}
+                variant="outline"
+                size="icon"
+                className="h-6 w-6"
+                disabled={+number === 0}
+              >
                 <Link href={`/block/${+number - 1}`}>
                   <ChevronLeftIcon className="h-4 w-4" />
                 </Link>

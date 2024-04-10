@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { FC } from 'react'
 import { formatEther, formatGwei, Hash } from 'viem'
 import { getTransaction, getTransactionReceipt } from './api'
+import { TimerIcon } from '@radix-ui/react-icons'
 
 interface TransactionProps {
   hash: Hash
@@ -15,7 +16,7 @@ export const Transaction: FC<TransactionProps> = async ({ hash }) => {
   const [transaction, transactionReceipt] = await Promise.all([getTransaction(hash), getTransactionReceipt(hash)])
 
   return (
-    <Details title="transaction details">
+    <Details title="transaction details" image={<TimerIcon width={20} height={20} />}>
       <div className="flex flex-1 flex-col gap-4">
         <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4 items-center">
           <div className="text-gray-500 md:text-black md:font-medium dark:md:text-white">Transaction Hash</div>
