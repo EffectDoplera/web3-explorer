@@ -1,15 +1,7 @@
 'use client'
 
 import { Button } from '@/shared/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/shared/ui/dialog'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/shared/ui/dialog'
 import { DashboardIcon } from '@radix-ui/react-icons'
 import { QRCodeCanvas } from 'qrcode.react'
 import { FC } from 'react'

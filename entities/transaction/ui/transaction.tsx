@@ -1,12 +1,17 @@
 import { cropFormatAddress } from '@/entities/address'
+import { CopyToClipboardButton } from '@/features/copy-to-clipboard'
 import { Badge } from '@/shared/ui/badge'
+import { Button } from '@/shared/ui/button'
 import { Details } from '@/shared/ui/details'
 import { Row } from '@/shared/ui/row'
-import Image from 'next/image'
-import { FC } from 'react'
-import { formatEther, formatGwei, Hash } from 'viem'
-import { getTransaction, getTransactionReceipt } from './api'
 import { TimerIcon } from '@radix-ui/react-icons'
+import Image from 'next/image'
+import Link from 'next/link'
+import { FC } from 'react'
+import { Hash } from 'viem'
+import { getTransaction, getTransactionReceipt } from '../api'
+import { formatGasPrice } from '../lib'
+import { TransactionStatusBadge } from './transaction-status-badge'
 
 interface TransactionProps {
   hash: Hash
@@ -20,30 +25,56 @@ export const Transaction: FC<TransactionProps> = async ({ hash }) => {
       <div className="flex flex-1 flex-col gap-4">
         <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4 items-center">
           <div className="text-gray-500 md:text-black md:font-medium dark:md:text-white">Transaction Hash</div>
-          <p className="break-all">{transaction.hash}</p>
+          <div>
+            <span className="break-all">{transaction.hash}</span>
+            <CopyToClipboardButton text={transaction.hash} className="align-text-bottom ml-2" />
+          </div>
         </Row>
 
         <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
           <div className="text-gray-500 md:text-black md:font-medium dark:md:text-white">Status</div>
-          <Badge variant="outline" className="justify-self-start">
+          <TransactionStatusBadge variant={transactionReceipt.status}>
             {transactionReceipt.status}
-          </Badge>
+          </TransactionStatusBadge>
         </Row>
 
         <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
           <div className="text-gray-500 md:text-black md:font-medium dark:md:text-white">Block</div>
-          <div>{transaction.blockNumber.toString()}</div>
+          <div>
+            <Link
+              className="text-primary font-semibold text-sm hover:underline focus:underline truncate"
+              href={`/block/${transaction.blockNumber}`}
+            >
+              {transaction.blockNumber.toString()}
+            </Link>
+          </div>
         </Row>
 
         <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
           <div className="text-gray-500 md:text-black md:font-medium dark:md:text-white">From</div>
-          <div>{cropFormatAddress(transaction.from)}</div>
+          <div className="flex items-center gap-2">
+            <Link
+              className="text-primary font-semibold text-sm hover:underline focus:underline truncate"
+              href={`/address/${transaction.from}`}
+            >
+              {cropFormatAddress(transaction.from)}
+            </Link>
+            <CopyToClipboardButton text={transaction.from} />
+          </div>
         </Row>
 
         {!!transaction.to && (
           <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
             <div className="text-gray-500 md:text-black md:font-medium dark:md:text-white">To</div>
-            <div>{cropFormatAddress(transaction.to)}</div>
+            <div className="flex items-center gap-2">
+              <Link
+                className="text-primary font-semibold text-sm hover:underline focus:underline truncate"
+                href={`/address/${transaction.to}`}
+              >
+                {cropFormatAddress(transaction.to)}
+              </Link>
+              <CopyToClipboardButton text={transaction.to} />
+            </div>
           </Row>
         )}
 
@@ -63,9 +94,7 @@ export const Transaction: FC<TransactionProps> = async ({ hash }) => {
         {!!transaction.gasPrice && (
           <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
             <div className="text-gray-500 md:text-black md:font-medium dark:md:text-white">Gas Price</div>
-            <div>
-              {formatGwei(transaction.gasPrice)} Gwei ({formatEther(transaction.gasPrice)}) MATIC
-            </div>
+            <div>{formatGasPrice(transaction)}</div>
           </Row>
         )}
       </div>
