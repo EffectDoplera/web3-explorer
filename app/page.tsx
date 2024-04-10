@@ -1,6 +1,7 @@
 import { LatestBlockNumberOverview, LatestBlockTransactionSizeOverview } from '@/entities/block'
 import { CurrentMarketCapOverview, CurrentPriceOverview } from '@/entities/price'
 import { MarketCapChart } from '@/widgets/market-cap-chart'
+import { Refresh } from './refresh'
 
 export const dynamic = 'force-dynamic'
 
@@ -14,6 +15,7 @@ export default async function Home() {
         <CurrentMarketCapOverview />
       </div>
       <MarketCapChart />
+      <Refresh />
     </>
   )
 }
