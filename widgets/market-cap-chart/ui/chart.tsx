@@ -1,18 +1,10 @@
 'use client'
 
 import { Details } from '@/shared/ui/details'
+import { CalendarIcon } from '@radix-ui/react-icons'
 import { LineChart } from '@tremor/react'
 import { FC } from 'react'
-
-const valueFormatter = (number: number) =>
-  `${Intl.NumberFormat('us', {
-    style: 'currency',
-    currency: 'USD',
-    notation: 'compact',
-    compactDisplay: 'long',
-  })
-    .format(number)
-    .toString()}`
+import { formatValue } from '../lib'
 
 interface ChartProps {
   data: {
@@ -22,13 +14,13 @@ interface ChartProps {
 }
 
 export const Chart: FC<ChartProps> = ({ data }) => (
-  <Details title="matic market cap history in 30 days">
+  <Details image={<CalendarIcon width={20} height={20} />} title="matic market cap history in 30 days">
     <LineChart
       data={data}
       index="date"
       categories={['matic']}
       colors={['fuchsia']}
-      valueFormatter={valueFormatter}
+      valueFormatter={formatValue}
       yAxisWidth={55}
       className="h-96 sm:block"
       autoMinValue
