@@ -42,12 +42,12 @@ export const SearchBar = () => {
           control={form.control}
           name="block"
           render={({ field }) => (
-            <FormItem>
-              <MagnifyingGlassIcon className="h-4 w-4 relative top-9 left-3" color="#cbd5e1" />
+            <FormItem className="space-y-0 relative">
+              <MagnifyingGlassIcon className="h-4 w-4 absolute top-3 left-3 text-muted-foreground" />
               <FormControl>
                 <Input
                   placeholder="Search by address / Txn Hash / Block"
-                  className="relative placeholder-shown:truncate pl-9"
+                  className="placeholder-shown:truncate pl-9"
                   {...field}
                 />
               </FormControl>
