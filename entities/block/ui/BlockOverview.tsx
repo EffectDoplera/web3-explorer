@@ -1,27 +1,10 @@
 import { Button } from '@/shared/ui/button'
 import { Details, DetailsRow, DetailsRowInfo, DetailsRowLabel } from '@/shared/ui/details'
-import { ChevronLeftIcon, ChevronRightIcon, CubeIcon, TimerIcon } from '@radix-ui/react-icons'
+import { ChevronLeftIcon, ChevronRightIcon, CubeIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
 import { FC } from 'react'
-import { getBlockDetails, getLatestBlock } from './api'
-import { formatBaseFeePerGas, formatBurntFees, formatGasLimit, formatGasUsed, formatTimestamp } from './lib'
-
-export const LatestBlockNumberOverview = async () => {
-  const latestBlock = await getLatestBlock()
-
-  return (
-    <Details
-      image={<CubeIcon width={20} height={20} />}
-      title="latest block number"
-      link={{
-        text: 'view block',
-        href: `/block/${latestBlock.number}`,
-      }}
-    >
-      {latestBlock.number.toLocaleString()}
-    </Details>
-  )
-}
+import { getBlockDetails } from '../api'
+import { formatBaseFeePerGas, formatBurntFees, formatGasLimit, formatGasUsed, formatTimestamp } from '../lib'
 
 interface BlockNavigationButtonsProps {
   currentBlockNumberber: number
@@ -47,23 +30,6 @@ const BlockNavigationButtons: FC<BlockNavigationButtonsProps> = ({ currentBlockN
     </Button>
   </div>
 )
-
-export const LatestBlockTransactionSizeOverview = async () => {
-  const latestBlock = await getLatestBlock()
-
-  return (
-    <Details
-      title="latest block transactions count"
-      image={<TimerIcon width={20} height={20} />}
-      link={{
-        text: 'view transaction',
-        href: `/transaction/${latestBlock.transactions[0]}`,
-      }}
-    >
-      {latestBlock.transactions.length}
-    </Details>
-  )
-}
 
 interface BlockOverviewProps {
   number: string

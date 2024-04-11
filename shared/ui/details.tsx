@@ -5,6 +5,7 @@ import { cn } from '../lib'
 import { Card, CardContent, CardHeader, CardTitle } from './card'
 
 interface DetailsProps {
+  className?: string
   title: string
   image?: ReactNode
   link?: {
@@ -13,13 +14,13 @@ interface DetailsProps {
   }
 }
 
-export const Details: FC<PropsWithChildren<DetailsProps>> = ({ children, title, link, image }) => (
+export const Details: FC<PropsWithChildren<DetailsProps>> = ({ children, title, link, image, className }) => (
   <Card className="flex-1">
     <CardHeader className="flex p-3 items-center gap-2 border-b-2 flex-row space-y-0">
       {image}
       <CardTitle className="leading-normal first-letter:uppercase truncate">{title}</CardTitle>
     </CardHeader>
-    <CardContent className="flex flex-1 flex-col gap-4 p-3 bg-white-cream-100 font-semibold">
+    <CardContent className={cn('flex flex-1 flex-col gap-4 p-3 bg-white-cream-100 font-semibold', className)}>
       {children}
       {link && (
         <Link className="text-primary font-semibold text-sm hover:underline focus:underline truncate" href={link.href}>
