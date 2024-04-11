@@ -11,5 +11,5 @@ export const getMaticPrice = cache(async () => {
     next: { revalidate: 60 },
   }) // revalidate every 60 seconds
   const data: CoinGeckoResponse = await response.json()
-  return data['matic-network'].usd
+  return data['matic-network']?.usd ?? 0 // TODO: fix api
 })
