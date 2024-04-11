@@ -1,7 +1,5 @@
 import { cropFormatAddress } from '@/entities/address'
 import { CopyToClipboardButton } from '@/features/copy-to-clipboard'
-import { Badge } from '@/shared/ui/badge'
-import { Button } from '@/shared/ui/button'
 import { Details } from '@/shared/ui/details'
 import { Row } from '@/shared/ui/row'
 import { TimerIcon } from '@radix-ui/react-icons'
@@ -84,11 +82,6 @@ export const Transaction: FC<TransactionProps> = async ({ hash }) => {
             <Image width={20} height={20} alt="polygon  icon" src="/icons/polygon.svg" />
             <p>{formatTransactionValue(transaction)} MATIC</p>
           </div>
-        </Row>
-
-        <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-          <div className="text-gray-500 md:text-black md:font-medium dark:md:text-white">Transaction Fees</div>
-          <div>0.013013802095944151 MATIC ($0.01) ????</div>
         </Row>
 
         {!!transaction.gasPrice && (
