@@ -1,0 +1,1 @@
+export const MATIC_TOTAL_COUNT = 9_908_000_000
