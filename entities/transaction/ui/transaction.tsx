@@ -10,7 +10,7 @@ import Link from 'next/link'
 import { FC } from 'react'
 import { Hash } from 'viem'
 import { getTransaction, getTransactionReceipt } from '../api'
-import { formatGasPrice } from '../lib'
+import { formatGasPrice, formatTransactionValue } from '../lib'
 import { TransactionStatusBadge } from './transaction-status-badge'
 
 interface TransactionProps {
@@ -82,7 +82,7 @@ export const Transaction: FC<TransactionProps> = async ({ hash }) => {
           <div className="text-gray-500 md:text-black md:font-medium dark:md:text-white">Value</div>
           <div className="flex gap-1 items-center">
             <Image width={20} height={20} alt="polygon  icon" src="/icons/polygon.svg" />
-            <p>{transaction.value.toString()} MATIC</p>
+            <p>{formatTransactionValue(transaction)} MATIC</p>
           </div>
         </Row>
 
