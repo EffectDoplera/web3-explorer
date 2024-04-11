@@ -17,10 +17,6 @@ export const getMonthMarketCap = cache(async () => {
     { next: { revalidate: 3600 } },
   )
 
-  if (response.status !== 200) {
-    return [[0, 0]] // TODO: fix api
-  }
-
   const { market_caps }: MarketCapResponse = await response.json()
   return market_caps.map(([date, price]) => ({
     date: new Intl.DateTimeFormat('en', {
