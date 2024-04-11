@@ -9,3 +9,12 @@ export const formatBaseFeePerGas = (block: Block) =>
 
 export const formatBurntFees = ({ baseFeePerGas, gasUsed }: Block) =>
   `🔥 ${formatEther(baseFeePerGas! * gasUsed)} MATIC`
+
+export const formatGasLimit = ({ gasLimit }: Block) => formatGwei(gasLimit)
+
+export const formatTimestamp = ({ timestamp }: Block) =>
+  new Intl.DateTimeFormat('en', {
+    dateStyle: 'long',
+    timeStyle: 'long',
+    timeZone: 'UTC',
+  }).format(new Date(+timestamp.toString() * 1000))

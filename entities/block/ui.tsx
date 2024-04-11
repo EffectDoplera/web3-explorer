@@ -1,12 +1,10 @@
 import { Button } from '@/shared/ui/button'
-import { Details } from '@/shared/ui/details'
-import { Row } from '@/shared/ui/row'
+import { Details, DetailsRow, DetailsRowInfo, DetailsRowLabel } from '@/shared/ui/details'
 import { ChevronLeftIcon, ChevronRightIcon, CubeIcon, TimerIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
 import { FC } from 'react'
-import { formatGwei } from 'viem'
 import { getBlockDetails, getLatestBlock } from './api'
-import { formatBaseFeePerGas, formatBurntFees, formatGasUsed } from './lib'
+import { formatBaseFeePerGas, formatBurntFees, formatGasLimit, formatGasUsed, formatTimestamp } from './lib'
 
 export const LatestBlockNumberOverview = async () => {
   const latestBlock = await getLatestBlock()
@@ -24,6 +22,31 @@ export const LatestBlockNumberOverview = async () => {
     </Details>
   )
 }
+
+interface BlockNavigationButtonsProps {
+  currentBlockNumberber: number
+}
+
+const BlockNavigationButtons: FC<BlockNavigationButtonsProps> = ({ currentBlockNumberber }) => (
+  <div className="flex gap-2 flex-nowrap">
+    <Button
+      asChild={currentBlockNumberber !== 0}
+      variant="outline"
+      size="icon"
+      className="h-6 w-6"
+      disabled={currentBlockNumberber === 0}
+    >
+      <Link href={`/block/${currentBlockNumberber - 1}`}>
+        <ChevronLeftIcon className="h-4 w-4" />
+      </Link>
+    </Button>
+    <Button asChild variant="outline" size="icon" className="h-6 w-6">
+      <Link href={`/block/${currentBlockNumberber + 1}`}>
+        <ChevronRightIcon className="h-4 w-4" />
+      </Link>
+    </Button>
+  </div>
+)
 
 export const LatestBlockTransactionSizeOverview = async () => {
   const latestBlock = await getLatestBlock()
@@ -48,68 +71,45 @@ interface BlockOverviewProps {
 
 export const BlockOverview: FC<BlockOverviewProps> = async ({ number }) => {
   const block = await getBlockDetails(number)
+
   return (
     <Details image={<CubeIcon width={20} height={20} />} title="block details">
-      <div className="flex flex-1 flex-col gap-4">
-        <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4 items-center">
-          <div className="text-gray-500 md:text-black md:font-medium">Block Height</div>
-          <div className="flex gap-4 items-center">
-            <p>{block.number.toString()}</p>
-            <div className="flex gap-2 flex-nowrap">
-              <Button
-                asChild={+number !== 0}
-                variant="outline"
-                size="icon"
-                className="h-6 w-6"
-                disabled={+number === 0}
-              >
-                <Link href={`/block/${+number - 1}`}>
-                  <ChevronLeftIcon className="h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="icon" className="h-6 w-6">
-                <Link href={`/block/${+number + 1}`}>
-                  <ChevronRightIcon className="h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </Row>
+      <DetailsRow className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4 items-center">
+        <DetailsRowLabel>Block Height</DetailsRowLabel>
+        <DetailsRowInfo className="flex gap-4 items-center">
+          <p>{block.number.toString()}</p>
+          <BlockNavigationButtons currentBlockNumberber={+number} />
+        </DetailsRowInfo>
+      </DetailsRow>
 
-        <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-          <div className="text-gray-500 md:text-black md:font-medium">Timestamp</div>
-          <div>
-            {new Intl.DateTimeFormat('en', {
-              dateStyle: 'long',
-              timeStyle: 'long',
-              timeZone: 'UTC',
-            }).format(new Date(+block.timestamp.toString() * 1000))}
-          </div>
-        </Row>
+      <DetailsRow>
+        <DetailsRowLabel>Timestamp</DetailsRowLabel>
+        <DetailsRowInfo>{formatTimestamp(block)}</DetailsRowInfo>
+      </DetailsRow>
 
-        <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-          <div className="text-gray-500 md:text-black md:font-medium">Gas Limit</div>
-          <div>{formatGwei(block.gasLimit)} Gwei</div>
-        </Row>
-        <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-          <div className="text-gray-500 md:text-black md:font-medium">Gas Used</div>
-          <div>{formatGasUsed(block)}</div>
-        </Row>
+      <DetailsRow>
+        <DetailsRowLabel>Gas Limit</DetailsRowLabel>
+        <DetailsRowInfo>{formatGasLimit(block)} Gwei</DetailsRowInfo>
+      </DetailsRow>
 
-        {!!block.baseFeePerGas && (
-          <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-            <div className="text-gray-500 md:text-black md:font-medium">Base Fee Per Gas</div>
-            <div>{formatBaseFeePerGas(block)}</div>
-          </Row>
-        )}
+      <DetailsRow>
+        <DetailsRowLabel>Gas Used</DetailsRowLabel>
+        <DetailsRowInfo>{formatGasUsed(block)}</DetailsRowInfo>
+      </DetailsRow>
 
-        {!!block.baseFeePerGas && (
-          <Row className="grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4">
-            <div className="text-gray-500 md:text-black md:font-medium">Burnt fees</div>
-            <div>{formatBurntFees(block)}</div>
-          </Row>
-        )}
-      </div>
+      {!!block.baseFeePerGas && (
+        <DetailsRow>
+          <DetailsRowLabel>Base Fee Per Gas</DetailsRowLabel>
+          <DetailsRowInfo>{formatBaseFeePerGas(block)}</DetailsRowInfo>
+        </DetailsRow>
+      )}
+
+      {!!block.baseFeePerGas && (
+        <DetailsRow>
+          <DetailsRowLabel>Burnt fees</DetailsRowLabel>
+          <DetailsRowInfo>{formatBurntFees(block)}</DetailsRowInfo>
+        </DetailsRow>
+      )}
     </Details>
   )
 }
