@@ -1,18 +1,18 @@
 import './globals.css'
+import { cn } from '@/shared/lib'
+import { SearchBar } from '@/widgets/search-bar'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
-import { Header } from './header'
-import { SearchBar } from '@/widgets/search-bar'
 import { Footer } from './footer'
-import { cn } from '@/shared/lib'
+import { Header } from './header'
 import { ThemeProvider } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
 }
 
@@ -28,18 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          inter.className
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <head>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+      </head>
+      <body className={cn('min-h-screen bg-background font-sans antialiased', inter.className)}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="min-h-full max-h-screen flex">
             <div className="grid grid-rows-[auto_1fr_auto] gap-4 w-full">
               <Header />
