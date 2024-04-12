@@ -5,7 +5,7 @@ import { MarketCapChart } from '@/widgets/market-cap-chart'
 import { Suspense } from 'react'
 import { Refresh } from './refresh'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 60
 
 export default async function Home() {
   return (
