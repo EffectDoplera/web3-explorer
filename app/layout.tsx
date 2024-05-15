@@ -1,6 +1,7 @@
 import './globals.css'
 import { cn } from '@/shared/lib'
 import { SearchBar } from '@/widgets/search-bar'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Footer } from './footer'
@@ -44,6 +45,7 @@ export default function RootLayout({
             </div>
           </div>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
