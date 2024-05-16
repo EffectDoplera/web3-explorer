@@ -1,9 +1,10 @@
 import { Count } from '@/shared/ui/count'
 import { Details } from '@/shared/ui/details'
 import { TimerIcon } from '@radix-ui/react-icons'
-import { getLatestBlock } from '../api'
+import { getLatestBlock, latestBlockPreload } from '../api'
 
 export const LatestBlockTransactionSizeOverview = async () => {
+  latestBlockPreload()
   const latestBlock = await getLatestBlock()
 
   return (
