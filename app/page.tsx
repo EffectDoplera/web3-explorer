@@ -1,11 +1,16 @@
 import { LatestBlockNumberOverview, LatestBlockTransactionSizeOverview } from '@/entities/block'
 import { CurrentMarketCapOverview, CurrentPriceOverview } from '@/entities/price'
 import { Skeleton } from '@/shared/ui/skeleton'
-import { MarketCapChart } from '@/widgets/market-cap-chart'
+import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import { Refresh } from './refresh'
 
 export const revalidate = 60
+
+const DynamicMarketCapChart = dynamic(() => import('@/widgets/market-cap-chart').then((mod) => mod.MarketCapChart), {
+  loading: () => <Skeleton className="h-[460px] w-full" />,
+  ssr: false,
+})
 
 export default async function Home() {
   return (
@@ -24,9 +29,7 @@ export default async function Home() {
           <CurrentMarketCapOverview />
         </Suspense>
       </div>
-      <Suspense fallback={<Skeleton className="h-[460px] w-full" />}>
-        <MarketCapChart />
-      </Suspense>
+      <DynamicMarketCapChart />
       <Refresh />
     </>
   )
