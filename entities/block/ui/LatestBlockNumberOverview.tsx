@@ -1,4 +1,5 @@
-import { Details, DetailsRow } from '@/shared/ui/details'
+import { Count } from '@/shared/ui/count'
+import { Details } from '@/shared/ui/details'
 import { CubeIcon } from '@radix-ui/react-icons'
 import { getLatestBlock } from '../api'
 
@@ -15,7 +16,7 @@ export const LatestBlockNumberOverview = async () => {
       }}
       className="flex-row justify-between items-center"
     >
-      {latestBlock.number.toLocaleString()}
+      <Count end={+latestBlock.number.toString()} />
     </Details>
   )
 }
