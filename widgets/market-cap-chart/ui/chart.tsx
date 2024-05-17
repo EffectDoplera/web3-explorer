@@ -24,6 +24,7 @@ export const Chart: FC<ChartProps> = ({ data }) => (
       yAxisWidth={55}
       className="h-96 sm:block"
       autoMinValue
+      showAnimation
     />
   </Details>
 )
