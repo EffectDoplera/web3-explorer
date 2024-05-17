@@ -35,12 +35,12 @@ export default function RootLayout({
       </head>
       <body className={cn('min-h-screen bg-background font-sans antialiased', inter.className)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="min-h-full max-h-screen flex">
+          <div className="min-h-screen max-h-screen flex">
             <div className="grid grid-rows-[auto_1fr_auto] gap-4 w-full">
               <Header />
               <main className="flex flex-col gap-4 mx-4">
                 <SearchBar />
-                {children}
+                <div className="flex flex-col gap-4">{children}</div>
               </main>
               <Footer />
             </div>
