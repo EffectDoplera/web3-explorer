@@ -2,7 +2,7 @@ import { Address, cropFormatAddress } from '@/entities/address'
 import { CopyToClipboardButton } from '@/features/copy-to-clipboard'
 import { AvatarPixel } from '@/features/generate-avatar-image'
 import { ShowQRCodeButton } from '@/features/show-qr-code'
-import { Avatar } from '@/shared/ui/avatar'
+import { Avatar, AvatarFallback } from '@/shared/ui/avatar'
 import { Hash } from 'viem'
 
 interface AddressPageProps {
@@ -17,7 +17,9 @@ export default async function AddressPage({ params }: AddressPageProps) {
     <div className="flex flex-1 justify-center flex-col gap-4">
       <div className="flex flex-wrap items-center gap-2">
         <Avatar>
-          <AvatarPixel name={hash} size={40} />
+          <AvatarFallback asChild>
+            <AvatarPixel name={hash} />
+          </AvatarFallback>
         </Avatar>
         <h3 className="text-xl font-medium">Address</h3>
         <p>{cropFormatAddress(hash)}</p>
