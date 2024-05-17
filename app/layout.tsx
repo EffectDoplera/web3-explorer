@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     description: APP_DESCRIPTION,
   },
   icons: [
-    { rel: 'icon', url: '/icons/favicon.ico' },
+    { rel: 'icon', url: '/favicon.ico' },
     { rel: 'apple-touch-icon', url: '/icons/apple-touch-icon.png' },
   ],
 }
