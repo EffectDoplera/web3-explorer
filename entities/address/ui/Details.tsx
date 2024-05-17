@@ -3,8 +3,8 @@ import { BackpackIcon } from '@radix-ui/react-icons'
 import Image from 'next/image'
 import { FC } from 'react'
 import { Hash } from 'viem'
-import { getBalance, getUSDBalance } from './api'
-import { formatMaticBalance, formatUSD } from './lib'
+import { getBalance, getUSDBalance } from '../api'
+import { formatMaticBalance, formatUSD } from '../lib'
 
 interface AddressProps {
   hash: Hash
