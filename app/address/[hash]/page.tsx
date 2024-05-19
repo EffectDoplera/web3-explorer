@@ -22,9 +22,11 @@ export default async function AddressPage({ params }: AddressPageProps) {
           </AvatarFallback>
         </Avatar>
         <h3 className="text-xl font-medium">Address</h3>
-        <p>{cropFormatAddress(hash)}</p>
-        <CopyToClipboardButton text={hash} />
-        <ShowQRCodeButton text={hash} />
+        <div className="flex items-center gap-1">
+          <p>{cropFormatAddress(hash)}</p>
+          <CopyToClipboardButton text={hash} />
+          <ShowQRCodeButton text={hash} />
+        </div>
       </div>
 
       <Address hash={hash} />
