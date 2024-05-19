@@ -55,7 +55,7 @@ export const DetailsRowLabel = React.forwardRef<React.ElementRef<'div'>, React.C
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn('text-gray-500 md:text-black md:font-medium dark:md:text-white', className)}
+      className={cn('text-muted-foreground md:text-black md:font-medium dark:md:text-white', className)}
       {...props}
     />
   ),
