@@ -31,7 +31,7 @@ export const Details: FC<PropsWithChildren<DetailsProps>> = ({ children, title, 
   </Card>
 )
 
-const rowVariants = cva('text-md font-medium', {
+const rowVariants = cva('text-base font-medium', {
   variants: {
     variant: {
       default: 'grid md:grid-cols-[minmax(0,25%),1fr] gap-x-4 items-center',
