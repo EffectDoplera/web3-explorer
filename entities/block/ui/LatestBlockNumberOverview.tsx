@@ -1,10 +1,9 @@
 import { Count } from '@/shared/ui/count'
 import { Details } from '@/shared/ui/details'
 import { CubeIcon } from '@radix-ui/react-icons'
-import { getLatestBlock, latestBlockPreload } from '../api'
+import { getLatestBlock } from '../api'
 
 export const LatestBlockNumberOverview = async () => {
-  latestBlockPreload()
   const latestBlock = await getLatestBlock()
 
   return (
