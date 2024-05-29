@@ -23,8 +23,8 @@ export const viewport: Viewport = {
   ],
 }
 
-const APP_NAME = 'Polygon explorer'
-const APP_DEFAULT_TITLE = 'Polygon explorer'
+const APP_NAME = 'Polygon Explorer'
+const APP_DEFAULT_TITLE = 'Polygon Explorer'
 const APP_TITLE_TEMPLATE = '%s - PWA App'
 const APP_DESCRIPTION = 'Explore matic transactions'
 
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
   },
   icons: [
     { rel: 'icon', url: '/favicon.ico' },
-    { rel: 'apple-touch-icon', url: '/icons/apple-touch-icon.png' },
+    { rel: 'apple-touch-icon', url: '/icons/maskable_icon_x192.png' },
   ],
 }
 
