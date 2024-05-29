@@ -1,21 +1,55 @@
 {
-  "name": "Polygon explorer",
+  "name": "Polygon Explorer",
   "short_name": "Polygon",
   "icons": [
     {
       "src": "/icons/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "/icons/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "background_color": "#FFFFFF",
+  "description": "Polygon transaction/block/address information",
+  "lang": "en",
+  "categories": ["web3", "crypto", "polygon"],
   "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "any",
+  "screenshots": [
+    {
+      "src": "/docs/1.png",
+      "type": "image/png",
+      "sizes": "1290x2796"
+    },
+    {
+      "src": "/docs/2.png",
+      "type": "image/png",
+      "sizes": "1290x2796"
+    },
+    {
+      "src": "/docs/3.png",
+      "type": "image/png",
+      "sizes": "1290x2796"
+    },
+    {
+      "src": "/docs/4.png",
+      "type": "image/png",
+      "sizes": "1290x2796"
+    },
+    {
+      "src": "/docs/5.png",
+      "type": "image/png",
+      "sizes": "1290x2796"
+    },
+    {
+      "src": "/docs/6.png",
+      "type": "image/png",
+      "sizes": "1290x2796"
+    }
+  ]
 }

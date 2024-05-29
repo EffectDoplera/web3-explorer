@@ -1,9 +1,9 @@
 # web3-explorer
 
-|                                   |                                  |                             |
-| :-------------------------------: | :------------------------------: | :-------------------------: |
-|    ![home page](./docs/1.png)     | ![home page chart](./docs/2.png) | ![block page](./docs/3.png) |
-| ![transaction page](./docs/4.png) |     ![address](./docs/5.png)     | ![block page](./docs/6.png) |
+|                                          |                                         |                                    |
+| :--------------------------------------: | :-------------------------------------: | :--------------------------------: |
+|    ![home page](./public/docs/1.png)     | ![home page chart](./public/docs/2.png) | ![block page](./public/docs/3.png) |
+| ![transaction page](./public/docs/4.png) |     ![address](./public/docs/5.png)     | ![block page](./public/docs/6.png) |
 
 ## Getting Started
 
