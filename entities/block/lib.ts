@@ -1,16 +1,23 @@
 import { gasUsedPercentFormatter } from '@/entities/gas'
-import { Block, formatEther, formatGwei } from 'viem'
+import { Block, formatEther, formatGwei, formatUnits } from 'viem'
 
 export const formatGasUsed = ({ gasUsed, gasLimit }: Block) =>
   `${gasUsed.toLocaleString()} (${gasUsedPercentFormatter(gasUsed, gasLimit)})`
 
-export const formatBaseFeePerGas = (block: Block) =>
-  `${formatEther(block.baseFeePerGas!)} MATIC (${formatGwei(block.baseFeePerGas!)} Gwei)`
+export const formatBaseFeePerGas = ({ baseFeePerGas }: Block) =>
+  `${new Intl.NumberFormat('en', {
+    minimumFractionDigits: 2,
+  }).format(baseFeePerGas!)} wei`
 
 export const formatBurntFees = ({ baseFeePerGas, gasUsed }: Block) =>
-  `🔥 ${formatEther(baseFeePerGas! * gasUsed)} MATIC`
+  `🔥 ${new Intl.NumberFormat('en', {
+    minimumFractionDigits: 9,
+  }).format(+formatEther(baseFeePerGas! * gasUsed))} MATIC`
 
-export const formatGasLimit = ({ gasLimit }: Block) => formatGwei(gasLimit)
+export const formatGasLimit = ({ gasLimit }: Block) =>
+  `${new Intl.NumberFormat('en', {
+    minimumFractionDigits: 0,
+  }).format(gasLimit!)}`
 
 export const formatTimestamp = ({ timestamp }: Block) =>
   new Intl.DateTimeFormat('en', {

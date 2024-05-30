@@ -55,7 +55,7 @@ export const BlockOverview: FC<BlockOverviewProps> = async ({ number }) => {
 
       <DetailsRow>
         <DetailsRowLabel>Gas Limit</DetailsRowLabel>
-        <DetailsRowInfo>{formatGasLimit(block)} Gwei</DetailsRowInfo>
+        <DetailsRowInfo>{formatGasLimit(block)}</DetailsRowInfo>
       </DetailsRow>
 
       <DetailsRow>
