@@ -7,7 +7,7 @@ import type { Metadata, Viewport } from 'next'
 import { Poppins } from 'next/font/google'
 import { Footer } from './footer'
 import { Header } from './header'
-import { ThemeProvider } from './providers'
+import { Providers } from './providers'
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -76,7 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn('min-h-screen bg-background font-sans antialiased', poppins.className)}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <Providers attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="min-h-screen max-h-screen flex">
             <div className="grid grid-rows-[auto_1fr_auto] gap-4 w-full">
               <Header />
@@ -87,7 +87,7 @@ export default function RootLayout({
               <Footer />
             </div>
           </div>
-        </ThemeProvider>
+        </Providers>
         <SpeedInsights />
         <Analytics />
       </body>

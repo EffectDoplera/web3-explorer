@@ -1,43 +1,44 @@
 'use client'
 
-import { getHashType } from '@/shared/lib'
-import { Form, FormControl, FormField, FormItem } from '@/shared/ui/form'
+import { useServerActionMutation } from '@/shared/hooks'
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/shared/ui/form'
 import { Input } from '@/shared/ui/input'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
-import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { searchBy } from './api'
+import { SearchBySchema } from './schema'
 
-const FormSchema = z.object({
-  // TODO: Add validation
-  block: z.string().min(0, {
-    message: '',
-  }),
-})
-
-type FormData = z.infer<typeof FormSchema>
+type FormData = z.infer<typeof SearchBySchema>
 
 export const SearchBar = () => {
   const form = useForm<FormData>({
-    resolver: zodResolver(FormSchema),
     defaultValues: {
       block: '',
     },
   })
 
-  const router = useRouter()
+  const { mutate, error } = useServerActionMutation(searchBy, {
+    mutationKey: ['searchBy'],
+  })
 
-  const onSubmit = ({ block }: FormData) => {
-    const hashType = getHashType(block)
-    if (hashType === 'unknown') return
-    router.push(`/${hashType}/${block}`)
-    form.reset()
+  const onSubmit = (input: FormData) => {
+    mutate(input, {
+      onError(error) {
+        Object.entries(error.fieldErrors).forEach(([key, value]) =>
+          form.setError(key, {
+            message: value[0],
+          }),
+        )
+      },
+    })
+
+    if (!error) form.reset()
   }
 
   return (
     <Form {...form}>
-      <form action="" method="POST" onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
           name="block"
@@ -51,6 +52,7 @@ export const SearchBar = () => {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />

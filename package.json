@@ -19,6 +19,7 @@
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-switch": "^1.0.3",
+    "@tanstack/react-query": "^5.40.0",
     "@tremor/react": "^3.16.3",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
@@ -35,7 +36,10 @@
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "viem": "^2.9.5",
-    "zod": "^3.22.4"
+    "zod": "^3.23.8",
+    "zsa": "^0.2.1",
+    "zsa-react": "^0.1.2",
+    "zsa-react-query": "^0.1.0"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
