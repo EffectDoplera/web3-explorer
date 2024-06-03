@@ -3,11 +3,16 @@
 import { Button } from '@/shared/ui/button'
 import { Toggle } from '@/shared/ui/toggle'
 import { BellIcon, BellOffIcon } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const ToggleNotification = () => {
-  const [allow, setAllow] = useState(Notification.permission === 'granted')
-  const [disabled, setDisabled] = useState(Notification.permission === 'denied')
+  const [allow, setAllow] = useState(false)
+  const [disabled, setDisabled] = useState(false)
+
+  useEffect(() => {
+    setAllow(Notification.permission === 'granted')
+    setDisabled(Notification.permission === 'denied')
+  }, [])
 
   const requestNotificationPermission = async () => {
     try {
