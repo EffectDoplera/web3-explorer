@@ -15,8 +15,15 @@
 
 # production
 /build
-**/*/sw**
-**/*/workbox**
+
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map
+**/public/swe-*.js
 
 # misc
 .DS_Store
@@ -36,3 +43,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+certificates

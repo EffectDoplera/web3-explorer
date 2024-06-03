@@ -13,5 +13,14 @@ export default process.env.ANALYZE === 'true'
   ? withBundleAnalyzer(nextConfig)
   : withPWA({
       dest: 'public',
-      disable: process.env.NODE_ENV === 'development',
+      register: true,
+      cacheOnFrontEndNav: true,
+      aggressiveFrontEndNavCaching: true,
+      cacheStartUrl: true,
+      dynamicStartUrl: true,
+      buildExcludes: [/middleware-manifest.json$/],
+      extendDefaultRuntimeCaching: true,
+      workboxOptions: {
+        skipWaiting: true,
+      },
     })(nextConfig)

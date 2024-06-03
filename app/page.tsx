@@ -1,4 +1,5 @@
 import { LatestBlockNumberOverview, LatestBlockTransactionSizeOverview } from '@/entities/block'
+import { Notifications } from '@/entities/notifications/ui'
 import { CurrentMarketCapOverview, CurrentPriceOverview } from '@/entities/price'
 import { Skeleton } from '@/shared/ui/skeleton'
 import dynamic from 'next/dynamic'
@@ -31,6 +32,7 @@ export default async function Home() {
       </div>
       <DynamicMarketCapChart />
       <Refresh />
+      <Notifications />
     </>
   )
 }
