@@ -14,11 +14,11 @@ export const ToggleNotification = () => {
     setDisabled(Notification.permission === 'denied')
   }, [])
 
-  const requestNotificationPermission = async () => {
+  const requestNotificationPermission = async (pressed: boolean) => {
     try {
       const permission = await Notification.requestPermission()
       setDisabled(permission === 'denied')
-      setAllow(permission === 'granted')
+      setAllow(pressed && permission === 'granted')
     } catch (e) {
       console.error(e)
       // TODO: handle error
