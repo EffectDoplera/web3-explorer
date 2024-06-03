@@ -1,4 +1,5 @@
 import { ThemeSwitcher } from '@/features/theme-switcher'
+import { ToggleNotification } from '@/features/toggle-notification'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -10,6 +11,9 @@ export const Header = () => (
       </Link>
       <h2 className="font-medium text-2xl">Polygon explorer</h2>
     </div>
-    <ThemeSwitcher />
+    <div className="flex items-center gap-4">
+      <ToggleNotification />
+      <ThemeSwitcher />
+    </div>
   </header>
 )
