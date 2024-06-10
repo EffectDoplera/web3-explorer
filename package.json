@@ -10,6 +10,7 @@
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
+    "db:drop": "drizzle-kit drop",
     "db:studio": "drizzle-kit studio",
     "start": "next start",
     "lint": "next lint"
@@ -31,6 +32,7 @@
     "@tremor/react": "^3.16.3",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
+    "arctic": "^1.9.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "drizzle-orm": "^0.31.1",

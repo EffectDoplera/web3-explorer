@@ -1,8 +1,21 @@
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 
-export const usersTable = sqliteTable('users', {
-  id: integer('id').primaryKey(),
-  name: text('name').notNull(),
-  age: integer('age').notNull(),
-  email: text('email').unique().notNull(),
+export const users = sqliteTable('users', {
+  id: text('id').notNull().primaryKey(),
+  githubId: integer('github_id').notNull().unique(),
+  username: text('username').notNull(),
 })
+
+export const sessions = sqliteTable('sessions', {
+  id: text('id').notNull().primaryKey(),
+  userId: text('user_id')
+    .notNull()
+    .references(() => users.id),
+  expiresAt: integer('expires_at').notNull(),
+})
+
+export type SelectUser = typeof users.$inferSelect
+export type InsertUser = typeof users.$inferInsert
+
+export type SelectSession = typeof sessions.$inferInsert
+export type InsertSession = typeof sessions.$inferInsert

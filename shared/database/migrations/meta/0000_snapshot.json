@@ -1,35 +1,72 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "67a6cd2e-23bb-46a6-8b46-090892436e38",
+  "id": "36dcb7ee-8cd3-4642-bad4-8dd6b9434b94",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "users": {
-      "name": "users",
+    "sessions": {
+      "name": "sessions",
       "columns": {
         "id": {
           "name": "id",
-          "type": "integer",
+          "type": "text",
           "primaryKey": true,
           "notNull": true,
           "autoincrement": false
         },
-        "name": {
-          "name": "name",
+        "user_id": {
+          "name": "user_id",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "age": {
-          "name": "age",
+        "expires_at": {
+          "name": "expires_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sessions_user_id_users_id_fk": {
+          "name": "sessions_user_id_users_id_fk",
+          "tableFrom": "sessions",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "users": {
+      "name": "users",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "github_id": {
+          "name": "github_id",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "email": {
-          "name": "email",
+        "username": {
+          "name": "username",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
@@ -37,10 +74,10 @@
         }
       },
       "indexes": {
-        "users_email_unique": {
-          "name": "users_email_unique",
+        "users_github_id_unique": {
+          "name": "users_github_id_unique",
           "columns": [
-            "email"
+            "github_id"
           ],
           "isUnique": true
         }
