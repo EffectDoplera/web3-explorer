@@ -10,7 +10,7 @@ export const SignInWithGithubButton = async () => {
 
   if (user) {
     return (
-      <Avatar>
+      <Avatar className="h-9 w-9">
         <AvatarFallback asChild>
           <AvatarPixel name={user.username} />
         </AvatarFallback>
