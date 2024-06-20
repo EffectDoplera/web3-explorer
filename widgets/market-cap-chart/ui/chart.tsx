@@ -21,7 +21,7 @@ export const Chart: FC<ChartProps> = ({ data }) => (
       categories={['matic']}
       colors={['fuchsia']}
       valueFormatter={formatValue}
-      yAxisWidth={55}
+      yAxisWidth={60}
       className="h-96 sm:block"
       autoMinValue
       showAnimation
