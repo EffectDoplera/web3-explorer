@@ -10,7 +10,7 @@ export const Header = () => (
       <Link href="/">
         <Image width={40} height={40} alt="main app icon" src={`/icons/polygon.svg`} />
       </Link>
-      <h2 className="font-medium text-2xl">Polygon explorer</h2>
+      <h2 className="font-medium capitalize text-lg sm:text-2xl">Polygon explorer</h2>
     </div>
     <div className="flex items-center gap-4">
       <ToggleNotification />
