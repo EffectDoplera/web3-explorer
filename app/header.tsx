@@ -1,3 +1,4 @@
+import { SignInWithGithubButton } from '@/features/login'
 import { ThemeSwitcher } from '@/features/theme-switcher'
 import { ToggleNotification } from '@/features/toggle-notification'
 import Image from 'next/image'
@@ -14,6 +15,7 @@ export const Header = () => (
     <div className="flex items-center gap-4">
       <ToggleNotification />
       <ThemeSwitcher />
+      <SignInWithGithubButton />
     </div>
   </header>
 )
